@@ -106,5 +106,25 @@ class StudentsController{
         return list;
     }
 
+    //multiple RequestParams
+    @GetMapping("/search")
+    public String search(@RequestParam String name,
+                         @RequestParam int age) {
+        return name + " is " + age + " years old";
+    }
+
+
+    //RequestParam
+    @GetMapping("/filter")
+    public String getCity(@RequestParam String city){
+        return "Welcome to "+ city + ".";
+    }
+
+    //PathVariable + RequestParam
+    @GetMapping("/{id}")
+    public String getall(@PathVariable int id,@RequestParam String name){
+        return id+" = " +name;
+    }
+
 }
 
