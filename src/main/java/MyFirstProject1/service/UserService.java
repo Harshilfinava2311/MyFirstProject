@@ -19,7 +19,6 @@ public class UserService {
 
     public void saveEntry(User user) {
         userRepository.save(user);
-
     }
 
     public List<User> getAll() {
