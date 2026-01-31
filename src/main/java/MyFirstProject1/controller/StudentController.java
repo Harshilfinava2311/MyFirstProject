@@ -50,9 +50,5 @@ public class StudentController {
         } else {
             throw new RuntimeException("Student not found with Id: " + myid);
         }
-
-
     }
-
-
 }

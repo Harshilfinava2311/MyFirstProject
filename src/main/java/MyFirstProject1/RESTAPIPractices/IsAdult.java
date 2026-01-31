@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+
 //Q9️⃣ Boolean Response
 //API: /isAdult/{age}
 //Example: /isAdult/20
@@ -14,6 +15,7 @@ import java.util.Map;
 //{
 //  "adult": true
 //}
+
 @RestController
 public class IsAdult {
 
