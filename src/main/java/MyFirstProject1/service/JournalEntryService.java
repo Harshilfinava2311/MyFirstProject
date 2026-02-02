@@ -24,7 +24,7 @@ public class JournalEntryService {
 
     public void saveEntry(JournalEntry journalEntry, String userName) {
 
-        User user=userService.findByUserName(userName);
+        User user = userService.findByUserName(userName);
         journalEntry.setDate(LocalDateTime.now());
         JournalEntry saved = journalEntryRepository.save(journalEntry);
         user.getJournalEntries().add(saved);
@@ -47,11 +47,12 @@ public class JournalEntryService {
     }
 
     public void deleteById(ObjectId id, String userName) {
-        User user=userService.findByUserName(userName);
-        user.getJournalEntries().removeIf(x->x.getId().equals(id));
+        User user = userService.findByUserName(userName);
+        user.getJournalEntries().removeIf(x -> x.getId().equals(id));
         userService.saveEntry(user);
         journalEntryRepository.deleteById(id);
     }
 
 }
+
 //controller-->services--> repository
