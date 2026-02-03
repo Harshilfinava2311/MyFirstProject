@@ -25,16 +25,15 @@ public class JournalEntryService {
 
     @Transactional
     public void saveEntry(JournalEntry journalEntry, String userName) {
-
         try {
             User user = userService.findByUserName(userName);
             journalEntry.setDate(LocalDateTime.now());
             JournalEntry saved = journalEntryRepository.save(journalEntry);
             user.getJournalEntries().add(saved);
-            user.setUserName(null); //not return in user
+//            user.setUserName(null); //not return in user
             userService.saveEntry(user);
         } catch (Exception e) {
-            System.out.println(e);
+//            System.out.println(e);
             throw new RuntimeException("An error find while saving the entry",e);
         }
 

@@ -34,7 +34,7 @@ public class JournalEntryControllerv2 {
 
     }
 
-    @PostMapping("{userName}")
+    @PostMapping("/{userName}")
     public ResponseEntity<JournalEntry> createEntry(@RequestBody JournalEntry myEntry, @PathVariable String userName) {
         try {
             User user = userService.findByUserName(userName);
@@ -43,7 +43,6 @@ public class JournalEntryControllerv2 {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
     }
 
     @GetMapping("/id/{myid}")
@@ -58,7 +57,6 @@ public class JournalEntryControllerv2 {
 
     @DeleteMapping("/id/{userName}/{myid}")
     public ResponseEntity<?> deleteJournalEntryById(@PathVariable ObjectId myid, @PathVariable String userName) {
-
         journalEntryService.deleteById(myid, userName);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
