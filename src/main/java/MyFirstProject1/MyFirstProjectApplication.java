@@ -14,11 +14,10 @@ public class MyFirstProjectApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MyFirstProjectApplication.class, args);
-
     }
 
     @Bean
-    public PlatformTransactionManager add(MongoDatabaseFactory dbFactory){
+    public PlatformTransactionManager add(MongoDatabaseFactory dbFactory) {
         return new MongoTransactionManager(dbFactory);
     }
 

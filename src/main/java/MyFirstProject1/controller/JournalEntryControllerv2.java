@@ -31,7 +31,6 @@ public class JournalEntryControllerv2 {
             return new ResponseEntity<>(all, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
     }
 
     @PostMapping("/{userName}")
@@ -59,7 +58,6 @@ public class JournalEntryControllerv2 {
     public ResponseEntity<?> deleteJournalEntryById(@PathVariable ObjectId myid, @PathVariable String userName) {
         journalEntryService.deleteById(myid, userName);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
     }
 
     @PutMapping("/id/{userName}/{id}")
@@ -72,6 +70,5 @@ public class JournalEntryControllerv2 {
             return new ResponseEntity<>(old, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
     }
 }
