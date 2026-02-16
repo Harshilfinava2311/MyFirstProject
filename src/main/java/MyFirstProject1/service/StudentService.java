@@ -13,18 +13,16 @@ public class StudentService {
     @Autowired
     private StudentRepository srepo;
 
-    public Student saveStudent(Student student){
-        return srepo.save(student);
+    public Student saveStudent(Student s){
+        return srepo.save(s);
     }
 
     public List<Student> getAllStudents(){
         return srepo.findAll();
     }
-
     public Optional<Student> findById(String id){
         return srepo.findById(id);
     }
-
     public void deleteStudent(String id){
         srepo.deleteById(id);
     }

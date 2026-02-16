@@ -3,53 +3,52 @@ package MyFirstProject1.controller;
 import MyFirstProject1.entity.Student;
 import MyFirstProject1.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
 @RestController
-
 @RequestMapping("/student")
-public class StudentController {
+public class StudentController{
+
     @Autowired
     private StudentService service;
 
-    @PostMapping
-    public Student addStudents(@RequestBody Student s) {
-        return service.saveStudent(s);
-    }
-
     @GetMapping
-    public List<Student> getAllStudents() {
+    public List<Student> getall(){
         return service.getAllStudents();
     }
 
-    @GetMapping("/{myid}")
-    public Optional<Student> getById(@PathVariable String myid) {
-        return service.findById(myid);
+    @GetMapping("/{id}")
+    public Optional<Student> getById(@PathVariable String id){
+        return service.findById(id);
     }
 
-    @DeleteMapping("/{myid}")
-    public Boolean delete(@PathVariable String myid) {
-        service.deleteStudent(myid);
+    @PostMapping
+    public Student addStudent(@RequestBody Student s){
+        return service.saveStudent(s);
+    }
+
+    @DeleteMapping("/{id}")
+    public Boolean deleteStudents(@PathVariable String id){
+        service.deleteStudent(id);
         return true;
     }
 
-    @PutMapping("/{myid}")
-    public Student update(@PathVariable String myid, @RequestBody Student s) {
-        Student old = service.findById(myid).orElse(null);
+    @PutMapping("/{id}")
+    public Student update(@PathVariable String id,@RequestBody Student s){
+        Student old=service.findById(id).orElse(null);
 
-        if (old != null) {
-
-            old.setName(s.getName() != null && !s.getName().isEmpty() ? s.getName() : old.getName());
-            old.setEmail(s.getEmail() != null && !s.getEmail().isEmpty() ? s.getEmail() : old.getEmail());
-            old.setCourse(s.getCourse() != null && !s.getCourse().isEmpty() ? s.getCourse() : old.getCourse());
-
-            return service.saveStudent(old);  // save only if found
-        } else {
-            throw new RuntimeException("Student not found with Id: " + myid);
+        if (old!=null){
+            old.setName(old.getName()!=null && !old.getName().isEmpty() ? s.getName() : old.getName() );
+            old.setEmail(old.getEmail()!=null && !old.getEmail().isEmpty()?s.getEmail():old.getEmail());
+            old.setCourse(old.getCourse()!=null && !old.getCourse().isEmpty() ? s.getCourse() : old.getCourse());
+            return service.saveStudent(old);
+        }else {
+            throw new RuntimeException("Student not found by id : "+id);
         }
+
     }
 }
+
+
