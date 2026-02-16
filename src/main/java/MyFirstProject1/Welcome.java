@@ -9,6 +9,6 @@ public class Welcome {
 
     @GetMapping("/welcome/{name}")
     public String welcome(@PathVariable String name){
-        return "Welcome to Spring Boot " +name;
+        return "Welcome to Spring Boot  😍😍😍 " +name;
     }
 }
